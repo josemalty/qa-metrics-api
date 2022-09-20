@@ -10,6 +10,8 @@ services:
             - "5432:5432"
         volumes:
             - /postgres-data:/var/lib/postgresql/data
+        networks:
+            - professionalnetwork-network
 
     pgadmin-compose:
         image: dpage/pgadmin4
@@ -20,12 +22,21 @@ services:
             - "54321:80"
         depends_on:
             - postgres
+        networks:
+            - professionalnetwork-network
 
-    worker:
-        build: ./
-        command: npm start
+    app:
+        build:
+            context: .
+        command: npm run start:dev
+        networks:
+            - professionalnetwork-network
         ports:
-            - "9730:9730"
+            - "3001:3001"
         volumes:
-            - ./:./
-            - ./node_modules
+            - ./:/home/node/app
+            - /home/node/app/node_modules
+
+networks:
+    professionalnetwork-network:
+        driver: bridge

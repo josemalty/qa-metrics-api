@@ -2,6 +2,7 @@ version: "3"
 services:
     postgres:
         image: "postgres"
+        container_name: db
         environment:
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=rngtjeb2
@@ -26,6 +27,7 @@ services:
             - professionalnetwork-network
 
     app:
+        container_name: app
         build:
             context: .
         command: npm run start:dev

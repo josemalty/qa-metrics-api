@@ -26,7 +26,7 @@ jobs:
               run: docker-compose stop
               
             - name: Run docker
-              run: docker-compose up -d && cd tests && pwd && npm install && ping -c 5 172.18.0.3 && npm run test
+              run: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' db && docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && docker-compose up -d && cd tests && pwd && npm install && ping -c 5 172.18.0.3 && npm run test
               
             #- name: Run Tests
               #working-directory: ./tests

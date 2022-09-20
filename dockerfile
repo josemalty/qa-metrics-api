@@ -1,6 +1,8 @@
-FROM node:16.17.0
+FROM node:14.17.6-alpine3.11 as base
 
-WORKDIR .
+WORKDIR /home/node/app
+
+RUN chown node:node .
 
 COPY package.json .
 RUN npm install

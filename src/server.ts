@@ -29,7 +29,7 @@ class Server {
         const PORT_DB = Number(process.env.PORT_DB) || 5432;
         await createConnection({
             type: "postgres",
-            host: "172.17.0.2",
+            host: "172.18.0.2",
             port: PORT_DB,
             username: "postgres",
             password: "rngtjeb2",

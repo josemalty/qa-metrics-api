@@ -1,6 +1,37 @@
 describe("UC01 - API USER", function () {
     let userId = null;
-    it("UC01.01 - GET USERS", function () {
+    
+    it("UC01.01 - POST USER", function () {
+        cy.wait(2000);
+        const body = {
+            name: "José Cypress Teste",
+            email: "jooteste@gmail.com",
+            password: "teste123",
+        };
+
+        cy.request({
+            method: "POST",
+            url: Cypress.env("api") + "users",
+            body: body,
+            headers: {},
+        }).then((response) => {
+            const wantedPostUser = {
+                name: "José Cypress Teste",
+                email: "jooteste@gmail.com",
+                password: "teste123",
+            };
+            expect(response.status).to.equal(201);
+            const postUser = response.body;
+            userId = postUser.id;
+            expect(postUser).to.not.equal(undefined);
+            expect(postUser).to.not.equal(null);
+            cy.writeFile("cypress/json/wantedPostUser.json", postUser);
+            expect(postUser.name).to.equal(wantedPostUser.name);
+            expect(postUser.email).to.equal(wantedPostUser.email);
+            expect(postUser.body).to.equal(wantedPostUser.body);
+        });
+    });
+    it("UC01.02 - GET USERS", function () {
         cy.request({
             method: "GET",
             url: Cypress.env("api") + "users",
@@ -71,50 +102,6 @@ describe("UC01 - API USER", function () {
             cy.writeFile("cypress/json/wantedUsers.json", users);
             expect(users[0].name).to.equal(wantedUsers[0].name);
             expect(users[0].email).to.equal(wantedUsers[0].email);
-            expect(users[0].body).to.equal(wantedUsers[0].body);
-            expect(users[1].name).to.equal(wantedUsers[1].name);
-            expect(users[1].email).to.equal(wantedUsers[1].email);
-            expect(users[1].body).to.equal(wantedUsers[1].body);
-            expect(users[2].name).to.equal(wantedUsers[2].name);
-            expect(users[2].email).to.equal(wantedUsers[2].email);
-            expect(users[2].body).to.equal(wantedUsers[2].body);
-            expect(users[3].name).to.equal(wantedUsers[3].name);
-            expect(users[3].email).to.equal(wantedUsers[3].email);
-            expect(users[3].body).to.equal(wantedUsers[3].body);
-            expect(users[4].name).to.equal(wantedUsers[4].name);
-            expect(users[4].email).to.equal(wantedUsers[4].email);
-            expect(users[4].body).to.equal(wantedUsers[4].body);
-        });
-    });
-    it("UC01.02 - POST USER", function () {
-        cy.wait(2000);
-        const body = {
-            name: "José Cypress Teste",
-            email: "jooteste@gmail.com",
-            password: "teste123",
-        };
-
-        cy.request({
-            method: "POST",
-            url: Cypress.env("api") + "users",
-            body: body,
-            headers: {},
-        }).then((response) => {
-            const wantedPostUser = {
-                name: "José Cypress Teste",
-                email: "jooteste@gmail.com",
-                password: "teste123",
-            };
-            expect(response.status).to.equal(201);
-            const postUser = response.body;
-            userId = postUser.id;
-            expect(postUser).to.not.equal(undefined);
-            expect(postUser).to.not.equal(null);
-            cy.writeFile("cypress/json/wantedPostUser.json", postUser);
-            expect(postUser.name).to.equal(wantedPostUser.name);
-            expect(postUser.email).to.equal(wantedPostUser.email);
-            expect(postUser.body).to.equal(wantedPostUser.body);
-        });
     });
     it("UC01.03 - GET USER BY ID", function () {
         cy.wait(2000);

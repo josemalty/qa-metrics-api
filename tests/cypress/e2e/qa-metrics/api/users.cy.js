@@ -1,6 +1,6 @@
 describe("UC01 - API USER", function () {
     it("UC01.01 - GET USERS", function () {
-        console.log("INICIOU OS TESTES");
+        console.log("INICIOU OS TESTESS");
         cy.request({
             method: "GET",
             url: Cypress.env("api") + "users",

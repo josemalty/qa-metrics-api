@@ -26,7 +26,7 @@ jobs:
               run: docker-compose stop
               
             - name: Run docker and tests
-              run: docker-compose up -d && docker compose -logs && cd tests && pwd && npm install && npm run test
+              run: docker-compose up -d && docker compose logs -f && cd tests && pwd && npm install && npm run test
               
             #- name: Run Tests
               #working-directory: ./tests

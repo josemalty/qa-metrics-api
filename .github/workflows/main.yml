@@ -29,7 +29,7 @@ jobs:
               run: docker-compose up -d
               
             - name: Check logs
-              run: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' db && docker compose logs -f -t
+              run: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' app && docker compose logs -f -t
               
             - name: Test
               working-directory: ./tests

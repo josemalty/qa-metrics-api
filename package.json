@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "tsc": "tsc ",
-        "start:dev": "npx rimraf build && tsc && nodemon ./build/server.js"
+        "start:dev": "npx rimraf build && tsc && nodemon --ignore ./tests/ ./build/server.js"
     },
     "keywords": [],
     "author": "bautistaj",

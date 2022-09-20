@@ -1,5 +1,4 @@
 describe("UC01 - API USER", function () {
-    let userId = null;
     it("UC01.01 - GET USERS", function () {
         cy.request({
             method: "GET",
@@ -65,7 +64,6 @@ describe("UC01 - API USER", function () {
             expect(response.status).to.equal(200);
             const users = response.body;
             Cypress.env("responseUserId", users.id);
-            console.log(Cypress.env("responseUserId"));
             expect(users).to.not.equal(undefined);
             expect(users).to.not.equal(null);
             cy.writeFile("cypress/json/wantedUsers.json", users);
@@ -87,7 +85,6 @@ describe("UC01 - API USER", function () {
         });
     });
     it("UC01.02 - POST USER", function () {
-        cy.wait(2000);
         const body = {
             name: "José Cypress Teste",
             email: "jooteste@gmail.com",
@@ -107,7 +104,7 @@ describe("UC01 - API USER", function () {
             };
             expect(response.status).to.equal(201);
             const postUser = response.body;
-            userId = postUser.id;
+            Cypress.env("responseUserId", postUser.id);
             expect(postUser).to.not.equal(undefined);
             expect(postUser).to.not.equal(null);
             cy.writeFile("cypress/json/wantedPostUser.json", postUser);
@@ -117,10 +114,9 @@ describe("UC01 - API USER", function () {
         });
     });
     it("UC01.03 - GET USER BY ID", function () {
-        cy.wait(2000);
         cy.request({
             method: "GET",
-            url: Cypress.env("api") + "users/" + userId.toString(),
+            url: Cypress.env("api") + "users/" + Cypress.env("responseUserId"),
             headers: {},
         }).then((response) => {
             const wantedUser = {
@@ -139,8 +135,6 @@ describe("UC01 - API USER", function () {
         });
     });
     it("UC01.04 - PUT USER", function () {
-        cy.wait(2000);
-        console.log("CHEGOU NO PUT");
         const body = {
             name: "João dos testes",
             email: "testerJohn@gmail.com",
@@ -149,7 +143,7 @@ describe("UC01 - API USER", function () {
 
         cy.request({
             method: "PUT",
-            url: Cypress.env("api") + "users/" + userId.toString(),
+            url: Cypress.env("api") + "users/" + Cypress.env("responseUserId"),
             body: body,
             headers: {},
             failOnStatusCode: false,
@@ -169,11 +163,9 @@ describe("UC01 - API USER", function () {
         });
     });
     it("UC01.05 - GET UDPATED USER", function () {
-        cy.wait(2000);
-        console.log("GET UPDATE ", userId.toString());
         cy.request({
             method: "GET",
-            url: Cypress.env("api") + "users/" + userId.toString(),
+            url: Cypress.env("api") + "users/" + Cypress.env("responseUserId"),
             headers: {},
             failOnStatusCode: false,
         }).then((response) => {
@@ -193,11 +185,9 @@ describe("UC01 - API USER", function () {
         });
     });
     it("UC01.06 - DELETE USER", function () {
-        cy.wait(2000);
-        console.log(Cypress.env("responseUserId"), "CONSOLE TESTE");
         cy.request({
             method: "DELETE",
-            url: Cypress.env("api") + "users/" + userId.toString(),
+            url: Cypress.env("api") + "users/" + Cypress.env("responseUserId"),
             headers: {},
         }).then((response) => {
             console.log(response);

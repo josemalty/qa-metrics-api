@@ -27,6 +27,8 @@ jobs:
 
             - name: Test
               working-directory: ./tests
+              run: npm install
+                cache: "npm"
               run: npm run test
 
     # build:

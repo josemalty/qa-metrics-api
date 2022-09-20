@@ -21,10 +21,16 @@ jobs:
 
             - name: Build-DB
               run: docker-compose build
-
-            - name: Create-DB
-              run: docker-compose up -d
-
+            
+            - name: Stop docker
+              run: docker-compose stop
+              
+            - name: Run docker
+              run: docker-compose up
+              
+            - name: Check logs
+              run: docker compose logs -f -t
+              
             - name: Test
               working-directory: ./tests
               run: npm install && npm run test

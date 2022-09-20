@@ -32,7 +32,7 @@ class Server {
     const PORT_DB = Number(process.env.PORT_DB) || 5432;
     const HOST_DB = process.env.HOST_DB || "172.18.0.2";
     console.log("PORT_DB", PORT_DB);
-    console.log("HOST", HOST_DB);
+    console.log("HOST_DB", HOST_DB);
     await createConnection({
       type: "postgres",
       host: HOST_DB,

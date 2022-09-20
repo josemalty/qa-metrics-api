@@ -22,10 +22,10 @@ services:
             - postgres
 
     worker:
-        build: ./worker
+        build: ./src
         command: npm start
         ports:
             - "9730:9730"
         volumes:
-            - ./worker/:/worker/
-            - /worker/node_modules
+            - ./src/:/src/
+            - /src/node_modules

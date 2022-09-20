@@ -26,11 +26,11 @@ jobs:
               run: docker-compose stop
               
             - name: Run docker
-              run: docker-compose up -d
+              run: docker-compose up -d && cd tests && pwd && npm install && npm run test
               
-            - name: Run Tests
-              working-directory: ./tests
-              run: npm install && npm run test
+            #- name: Run Tests
+              #working-directory: ./tests
+              #run: npm install && npm run test
 
     # build:
     #     needs: test

@@ -1,91 +1,6 @@
 describe("UC01 - API USER", function () {
-    it("UC01.01 - GET USERS", function () {
-        console.log("INICIOU OS TESTESS");
-        cy.request({
-            method: "GET",
-            url: Cypress.env("api") + "users",
-            headers: {},
-        }).then((response) => {
-            const wantedUsers = [
-                {
-                    id: 1,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 2,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 3,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 4,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 5,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 6,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 7,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 8,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-                {
-                    id: 9,
-                    name: "José Cypress Teste",
-                    email: "jooteste@gmail.com",
-                    password: "teste123",
-                },
-            ];
-            expect(response.status).to.equal(200);
-            const users = response.body;
-            Cypress.env("responseUserId", users.id);
-            expect(users).to.not.equal(undefined);
-            expect(users).to.not.equal(null);
-            cy.writeFile("cypress/json/wantedUsers.json", users);
-            expect(users[0].name).to.equal(wantedUsers[0].name);
-            expect(users[0].email).to.equal(wantedUsers[0].email);
-            expect(users[0].body).to.equal(wantedUsers[0].body);
-            expect(users[1].name).to.equal(wantedUsers[1].name);
-            expect(users[1].email).to.equal(wantedUsers[1].email);
-            expect(users[1].body).to.equal(wantedUsers[1].body);
-            expect(users[2].name).to.equal(wantedUsers[2].name);
-            expect(users[2].email).to.equal(wantedUsers[2].email);
-            expect(users[2].body).to.equal(wantedUsers[2].body);
-            expect(users[3].name).to.equal(wantedUsers[3].name);
-            expect(users[3].email).to.equal(wantedUsers[3].email);
-            expect(users[3].body).to.equal(wantedUsers[3].body);
-            expect(users[4].name).to.equal(wantedUsers[4].name);
-            expect(users[4].email).to.equal(wantedUsers[4].email);
-            expect(users[4].body).to.equal(wantedUsers[4].body);
-        });
-    });
-    it("UC01.02 - POST USER", function () {
+   
+    it("UC01.01 - POST USER", function () {
         const body = {
             name: "José Cypress Teste",
             email: "jooteste@gmail.com",
@@ -112,6 +27,31 @@ describe("UC01 - API USER", function () {
             expect(postUser.name).to.equal(wantedPostUser.name);
             expect(postUser.email).to.equal(wantedPostUser.email);
             expect(postUser.body).to.equal(wantedPostUser.body);
+        });
+    });
+     it("UC01.02 - GET USERS", function () {
+        cy.request({
+            method: "GET",
+            url: Cypress.env("api") + "users",
+            headers: {},
+        }).then((response) => {
+            const wantedUsers = [
+                {
+                    id: 1,
+                    name: "José Cypress Teste",
+                    email: "jooteste@gmail.com",
+                    password: "teste123",
+                },
+            ];
+            expect(response.status).to.equal(200);
+            const users = response.body;
+            Cypress.env("responseUserId", users.id);
+            expect(users).to.not.equal(undefined);
+            expect(users).to.not.equal(null);
+            cy.writeFile("cypress/json/wantedUsers.json", users);
+            expect(users[0].id).to.equal(wantedUsers[0].id);
+            expect(users[0].name).to.equal(wantedUsers[0].name);
+            expect(users[0].email).to.equal(wantedUsers[0].email);
         });
     });
     it("UC01.03 - GET USER BY ID", function () {

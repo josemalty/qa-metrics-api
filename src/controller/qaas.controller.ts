@@ -14,12 +14,12 @@ export class QaasController {
     }
 
     public index = async (req: Request, res: Response) => {
-        const qaass = await this.qaasService.index();
+        const qaas = await this.qaasService.index();
         const foundQaass = await this.qaasService.index();
         if (!foundQaass) {
             return res.status(404).send("Nenhum serviço foi cadastrado!");
         }
-        res.send(qaass).json();
+        res.send(qaas).json();
     };
 
     public create = async (req: Request, res: Response) => {

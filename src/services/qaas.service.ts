@@ -11,8 +11,8 @@ export class QaasService {
     }
 
     public index = async () => {
-        const qaass = await this.qaasRepository.find();
-        return qaass;
+        const qaas = await this.qaasRepository.find();
+        return qaas;
     };
 
     public create = async (qaas: QaasEntity) => {

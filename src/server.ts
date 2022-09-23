@@ -31,7 +31,7 @@ class Server {
             host: "localhost",
             port: 5432,
             username: "postgres",
-            senha: "rngtjeb2",
+            pass: "rngtjeb2",
             database: "postgres",
             entities: ["build/database/entities/**/*.js"],
             synchronize: true,

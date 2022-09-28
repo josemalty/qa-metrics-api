@@ -55,7 +55,7 @@ describe("UC01 - API USER", function () {
     });
   });
   it("UC01.03 - GET USER BY ID", function () {
-    console.log("TESTE D", userId);
+    console.log("TEST SONAR", userId);
     cy.request({
       method: "GET",
       url: Cypress.env("api") + "users/" + userId,

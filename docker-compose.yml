@@ -17,7 +17,7 @@ services:
     sonarqube:
         image: sonarqube:community
         depends_on:
-        - db
+        - postgres
         environment:
             - SONAR_JDBC_USERNAME=sonartest
             - SONAR_JDBC_PASSWORD=sonartest

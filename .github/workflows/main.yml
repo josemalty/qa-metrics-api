@@ -39,6 +39,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: sonarsource/sonarqube-scan-action@master
+    command: ["sh", "-c", "sleep 60 && sonar-scanner && -Dsonar.projectBaseDir=/usr/src"]
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

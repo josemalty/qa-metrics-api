@@ -16,6 +16,7 @@ services:
     
     sonarqube:
         image: sonarqube:community
+        container_name: sonarqube
         depends_on:
         - postgres
         environment:

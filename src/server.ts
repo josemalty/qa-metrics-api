@@ -20,7 +20,7 @@ class Server {
     public configuration() {
         this.app.set("port", process.env.PORT || 3001);
         this.app.use(express.json());
-    }
+    
 
     /**
      * Method to configure the routes

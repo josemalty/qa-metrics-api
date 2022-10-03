@@ -21,7 +21,7 @@ describe("UC01 - API USER", function () {
       const postUser = response.body;
       console.log({ postUser });
       userId = postUser.id;
-      console.log("TESTE XY", userId);
+      console.log("TESTE XYZ", userId);
       expect(postUser).to.not.equal(undefined);
       expect(postUser).to.not.equal(null);
       cy.writeFile("cypress/json/wantedPostUser.json", postUser);

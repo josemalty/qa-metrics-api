@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { UserController } from "./controller/user.controller"; // import the post controller
 import { createConnection } from "typeorm";
+import {throws} from "balbal";
 
 class Server {
     private userController: UserController;
@@ -20,7 +21,7 @@ class Server {
     public configuration() {
         this.app.set("port", process.env.PORT || 3001);
         this.app.use(express.json());
-    
+    }
 
     /**
      * Method to configure the routes

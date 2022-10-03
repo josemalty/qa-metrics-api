@@ -1,6 +1,7 @@
 import { throws } from "assert";
 import { Router, Response, Request } from "express";
 import { UserEntity } from "../database/entities/user.entity";
+import { QaasEntity } from "../database/entities/qaas.entity";
 import { UserService } from "../services/user.service"; // import service
 
 export class UserController {

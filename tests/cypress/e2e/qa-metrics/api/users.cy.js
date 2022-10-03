@@ -20,7 +20,7 @@ describe("UC01 - API USER", function () {
                 email: "jooteste@gmail.com",
                 password: "teste123",
             };
-            console.log("Teste")
+            console.log("TesteSonar")
             expect(response.status).to.equal(201);
             const postUser = response.body;
             userId = postUser.id;

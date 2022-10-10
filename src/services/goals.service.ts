@@ -26,6 +26,12 @@ export class GoalsService {
         return updatedGoals;
     };
 
+    public update = async (goals: GoalsEntity, id: number) => {
+        goals.id = id;
+        const updatedGoals = await this.goalsRepository.save(goals);
+        return updatedGoals;
+    };
+
     public delete = async (id: number) => {
         const deletedGoals = await this.goalsRepository.delete(id);
         return deletedGoals;

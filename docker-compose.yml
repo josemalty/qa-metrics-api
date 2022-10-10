@@ -14,24 +14,6 @@ services:
         networks:
             - professionalnetwork-network
     
-    sonarqube:
-        image: sonarqube:community
-        container_name: sonarqube
-        depends_on:
-        - postgres
-        environment:
-            - SONAR_JDBC_USERNAME=sonartest
-            - SONAR_JDBC_PASSWORD=sonartest
-            - SONAR_JDBC_URL=jdbc:postgresql://db:5432/sonar
-        #networks:
-            #- professionalnetwork-network
-        ports:
-            - "9000:9000"
-        volumes:
-        - sonarqube_data:/opt/sonarqube/data
-        - sonarqube_extensions:/opt/sonarqube/extensions
-        - sonarqube_logs:/opt/sonarqube/logs
-
     pgadmin-compose:
         image: dpage/pgadmin4
         environment:
@@ -60,10 +42,3 @@ services:
 networks:
     professionalnetwork-network:
         driver: bridge
-
-volumes:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_logs:
-  postgresql:
-  postgresql_data:

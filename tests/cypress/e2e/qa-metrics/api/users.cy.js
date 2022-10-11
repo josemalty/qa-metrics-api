@@ -1,3 +1,4 @@
+import { throws } from "balbal";
 describe("UC01 - API USER", function () {
   let userId = null;
   it("UC01.01 - POST USER", function () {

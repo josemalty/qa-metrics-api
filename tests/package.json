@@ -4,15 +4,18 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "cypress run --browser chrome --env api=http://localhost:3001/api/ --config video=false --spec **/*.spec.js",
-        "test:single": "cypress run --browser chrome --env api=http://localhost:3001/api/ --config video=false --spec /Users/dougaq/Dev/cyaltoqi/cypress/integration/altoqi/createNewUser.spec.js",
+        "test": "cypress run --browser chrome --env api=http://localhost:3001/api/ --config video=false --spec **/*.cy.js",
+        "test:single": "cypress run --browser chrome --env api=http://localhost:3001/api/ --config video=false --spec /Users/dougaq/Dev/cyaltoqi/cypress/integration/altoqi/createNewUser.cy.js",
         "test:watch": "cypress open  --env api=http://localhost:3001/api/",
-        "test:dashboard": "./node_modules/.bin/cypress run --browser chrome --env api=http://localhost:3001/api/ --record --key e9da515b-a560-4b3e-9373-198640902bf4 --config video=false --spec **/*.spec.js",
-        "test:dashboard:pr": "./node_modules/.bin/cypress run --browser chrome --env api=http://localhost:3001/api/ --record --key e9da515b-a560-4b3e-9373-198640902bf4 --group 4x-electron --parallel --config video=false --spec **/*.spec.js"
+        "test:dashboard": "./node_modules/.bin/cypress run --browser chrome --env api=http://localhost:3001/api/ --record --key e9da515b-a560-4b3e-9373-198640902bf4 --config video=false --spec **/*.cy.js",
+        "test:dashboard:pr": "./node_modules/.bin/cypress run --browser chrome --env api=http://localhost:3001/api/ --record --key e9da515b-a560-4b3e-9373-198640902bf4 --group 4x-electron --parallel --config video=false --spec **/*.cy.js"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "cypress": "^10.8.0"
+    },
+    "dependencies": {
+        "cypress-sonarqube-reporter": "^1.10.0"
     }
 }
